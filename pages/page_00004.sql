@@ -1,0 +1,374 @@
+prompt --application/pages/page_00004
+begin
+--   Manifest
+--     PAGE: 00004
+--   Manifest End
+wwv_flow_api.component_begin (
+ p_version_yyyy_mm_dd=>'2020.03.31'
+,p_release=>'20.1.0.00.13'
+,p_default_workspace_id=>16674536292368497
+,p_default_application_id=>300
+,p_default_id_offset=>20542468695429963
+,p_default_owner=>'SANA_DEV'
+);
+wwv_flow_api.create_page(
+ p_id=>4
+,p_user_interface_id=>wwv_flow_api.id(74639230748844335)
+,p_name=>'Bodega'
+,p_step_title=>'Bodega'
+,p_autocomplete_on_off=>'OFF'
+,p_javascript_file_urls=>'#APP_IMAGES#js/bodegas.js'
+,p_css_file_urls=>'#APP_IMAGES#css/custom.css'
+,p_step_template=>wwv_flow_api.id(74520882497844221)
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_last_updated_by=>'SANA'
+,p_last_upd_yyyymmddhh24miss=>'20200705185716'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(78337895291442126)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(74565441351844250)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_api.id(74502054024844202)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_api.id(74618104107844290)
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(78338512517442128)
+,p_plug_name=>'Disponible'
+,p_icon_css_classes=>'fa-cubes'
+,p_region_template_options=>'#DEFAULT#:t-Region--showIcon:t-Region--noBorder:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(74555992002844245)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ID,',
+'       FECHA_MODIFICACION,',
+'       ID_BODEGA,',
+'       MATAERIA,',
+'       NOMBRE,',
+'       UNIDAD_MEDIDA,',
+'       "Disponible",',
+'       ALERTA,',
+'       PRECIO_SUGERIDO,',
+'       CANTIDAD_SUGERIDA',
+'  from BODEGAS_VIEW'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_worksheet(
+ p_id=>wwv_flow_api.id(78338624732442128)
+,p_name=>'Bodega'
+,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+,p_no_data_found_message=>'No data found.'
+,p_max_rows_per_page=>'50'
+,p_search_button_label=>'Buscar'
+,p_show_nulls_as=>'-'
+,p_pagination_type=>'ROWS_X_TO_Y_OF_Z'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:EMAIL:XLS:PDF:RTF'
+,p_detail_link=>'f?p=&APP_ID.:19:&SESSION.::&DEBUG.::P19_ID:#MATAERIA###MATERIA#'
+,p_detail_link_text=>'<span aria-label="Edit"><span class="fa fa-edit" aria-hidden="true" title="Edit"></span></span>'
+,p_owner=>'SANA'
+,p_internal_uid=>57796156037012165
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(78338980538442131)
+,p_db_column_name=>'ID'
+,p_display_order=>1
+,p_column_identifier=>'A'
+,p_column_label=>'Id'
+,p_column_type=>'NUMBER'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(78339436756442131)
+,p_db_column_name=>'ID_BODEGA'
+,p_display_order=>21
+,p_column_identifier=>'B'
+,p_column_label=>'Id Bodega'
+,p_column_type=>'NUMBER'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(78340180760442132)
+,p_db_column_name=>'FECHA_MODIFICACION'
+,p_display_order=>51
+,p_column_identifier=>'D'
+,p_column_label=>'Fecha Modificacion'
+,p_column_type=>'DATE'
+,p_display_text_as=>'HIDDEN'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80406725261887812)
+,p_db_column_name=>'NOMBRE'
+,p_display_order=>61
+,p_column_identifier=>'R'
+,p_column_label=>'Nombre'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80495073075619177)
+,p_db_column_name=>'MATAERIA'
+,p_display_order=>71
+,p_column_identifier=>'W'
+,p_column_label=>'Mataeria'
+,p_column_type=>'NUMBER'
+,p_column_alignment=>'RIGHT'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80406842931887813)
+,p_db_column_name=>'UNIDAD_MEDIDA'
+,p_display_order=>81
+,p_column_identifier=>'S'
+,p_column_label=>'Unidad Medida'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80493828113619164)
+,p_db_column_name=>'Disponible'
+,p_display_order=>91
+,p_column_identifier=>'T'
+,p_column_label=>'Disponible'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'999G999G999G999G990D00'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80493923634619165)
+,p_db_column_name=>'PRECIO_SUGERIDO'
+,p_display_order=>101
+,p_column_identifier=>'U'
+,p_column_label=>'Precio Sugerido'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'FML999G999G999G999G990D00'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(80493971582619166)
+,p_db_column_name=>'CANTIDAD_SUGERIDA'
+,p_display_order=>111
+,p_column_identifier=>'V'
+,p_column_label=>'Cantidad Sugerida'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'999G999G999G999G990D00'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(78262920861436310)
+,p_db_column_name=>'ALERTA'
+,p_display_order=>121
+,p_column_identifier=>'I'
+,p_column_label=>'Alerta'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+,p_format_mask=>'999G999G999G999G990D00'
+);
+wwv_flow_api.create_worksheet_rpt(
+ p_id=>wwv_flow_api.id(78350445352464961)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'578080'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'ID:ID_BODEGA:NOMBRE:Disponible:UNIDAD_MEDIDA:APXWS_CC_001:ALERTA::MATAERIA'
+,p_break_on=>'0:0:0:0:0'
+,p_break_enabled_on=>'0:0:0:0:0'
+);
+wwv_flow_api.create_worksheet_condition(
+ p_id=>wwv_flow_api.id(80523285022182905)
+,p_report_id=>wwv_flow_api.id(78350445352464961)
+,p_name=>'Cantidad Baja'
+,p_condition_type=>'HIGHLIGHT'
+,p_allow_delete=>'Y'
+,p_column_name=>'APXWS_CC_002'
+,p_operator=>'<'
+,p_expr=>'0'
+,p_condition_sql=>' (case when ((#APXWS_CC_EXPR#) < to_number(#APXWS_EXPR#)) then #APXWS_HL_ID# end) '
+,p_condition_display=>'#APXWS_COL_NAME# < #APXWS_EXPR_NUMBER#  '
+,p_enabled=>'Y'
+,p_highlight_sequence=>10
+,p_row_bg_color=>'#FFD6D2'
+,p_row_font_color=>'#000000'
+);
+wwv_flow_api.create_worksheet_computation(
+ p_id=>wwv_flow_api.id(80523722539182905)
+,p_report_id=>wwv_flow_api.id(78350445352464961)
+,p_db_column_name=>'APXWS_CC_001'
+,p_column_identifier=>'C01'
+,p_computation_expr=>'U / V'
+,p_format_mask=>'FML999G999G999G999G990D00'
+,p_column_type=>'NUMBER'
+,p_column_label=>'Precio Unitario'
+,p_report_label=>'Precio Unitario'
+);
+wwv_flow_api.create_worksheet_computation(
+ p_id=>wwv_flow_api.id(80524149886182906)
+,p_report_id=>wwv_flow_api.id(78350445352464961)
+,p_db_column_name=>'APXWS_CC_002'
+,p_column_identifier=>'C02'
+,p_computation_expr=>'T - I'
+,p_format_mask=>'999G999G999G999G990D00'
+,p_column_type=>'NUMBER'
+,p_column_label=>'isAlert'
+,p_report_label=>'isAlert'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(80273300536927692)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(78337895291442126)
+,p_button_name=>'PRICE'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--mobileHideLabel:t-Button--large:t-Button--noUI:t-Button--iconRight'
+,p_button_template_id=>wwv_flow_api.id(74616805127844289)
+,p_button_image_alt=>'Costos de Materia'
+,p_button_position=>'REGION_TEMPLATE_EDIT'
+,p_button_redirect_url=>'f?p=&APP_ID.:15:&SESSION.::&DEBUG.:RP,15::'
+,p_icon_css_classes=>'fa-list-ul'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(78442791697431081)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(78337895291442126)
+,p_button_name=>'Graficas'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--mobileHideLabel:t-Button--large:t-Button--noUI:t-Button--iconRight'
+,p_button_template_id=>wwv_flow_api.id(74616805127844289)
+,p_button_image_alt=>unistr('Estad\00EDsticas')
+,p_button_position=>'REGION_TEMPLATE_EDIT'
+,p_button_redirect_url=>'f?p=&APP_ID.:42:&SESSION.::&DEBUG.:RP,42::'
+,p_icon_css_classes=>'fa-bar-chart'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(78261000879436291)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(78338512517442128)
+,p_button_name=>'ADD'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#:t-Button--iconRight:t-Button--hoverIconPush'
+,p_button_template_id=>wwv_flow_api.id(74616805127844289)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Agregar'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:19:&SESSION.::&DEBUG.:RP,19::'
+,p_icon_css_classes=>'fa-plus'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(79628863759990694)
+,p_name=>'P4_ALERT'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(78338512517442128)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(78701795528730585)
+,p_name=>'EDIT'
+,p_event_sequence=>30
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_api.id(78338512517442128)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(78704549794730612)
+,p_event_id=>wwv_flow_api.id(78701795528730585)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(78338512517442128)
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(78760514113569071)
+,p_name=>'ADD'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(78261000879436291)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(78760715242569073)
+,p_event_id=>wwv_flow_api.id(78760514113569071)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(78338512517442128)
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(78760931650569075)
+,p_name=>'Badges'
+,p_event_sequence=>60
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_api.id(78338512517442128)
+,p_bind_type=>'live'
+,p_bind_event_type=>'apexafterrefresh'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(78761549027569081)
+,p_event_id=>wwv_flow_api.id(78760931650569075)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P4_ALERT'
+,p_attribute_01=>'SQL_STATEMENT'
+,p_attribute_03=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT',
+'    COUNT(*)',
+'FROM',
+'    MATERIAS_BODEGAS',
+'WHERE',
+'    ID_BODEGA = 1',
+'AND',
+'    CANTIDAD < ALERTA',
+';'))
+,p_attribute_08=>'Y'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(78760998861569076)
+,p_event_id=>wwv_flow_api.id(78760931650569075)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'actualizarBadges();'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(80405720704887802)
+,p_name=>'New'
+,p_event_sequence=>70
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_api.id(78338512517442128)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'apexafterrefresh'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(80405769265887803)
+,p_event_id=>wwv_flow_api.id(80405720704887802)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'addLinkClass();'
+);
+wwv_flow_api.component_end;
+end;
+/
